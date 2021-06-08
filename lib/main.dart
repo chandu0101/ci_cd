@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:basic/src/store/app_state.dart';
-import 'package:basic/src/store/pstates/simple_ps.dart';
-import 'package:basic/src/store/selectors/app_selectors.dart';
+import 'package:ci_cd/src/store/app_state.dart';
+import 'package:ci_cd/src/store/pstates/simple_ps.dart';
+import 'package:ci_cd/src/store/selectors/app_selectors.dart';
 import 'package:dstore_flutter/dstore_flutter.dart';
 import 'package:flutter/material.dart';
 
@@ -40,7 +40,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("DStore Basic"),
+        title: Text("DStore ci_cd"),
       ),
       body: SelectorBuilder<AppState, SimplePS>(
         selector: AppSeelctors.simplePS,
