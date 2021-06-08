@@ -1,0 +1,37 @@
+name: Tests
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  unit-test:
+    name: "Unit tests on ${{ matrix.os }}"
+    strategy:
+      matrix:
+        os:
+          - "ubuntu-18.04"
+          - "windows-2019"
+          - "macos-10.15"
+    steps:
+      -
+        name: Checkout basic code
+        uses: "actions/checkout@v2"
+      -
+        name: Clone Flutter repository
+        uses: "subosito/flutter-action@v3"
+      -
+        run: "flutter doctor -v"
+      -
+        run: flutter pub get
+      -
+        run: flutter analyze
+      -
+        name: Ensure the Dart code is formatted correctly
+        run: "flutter format --set-exit-if-changed --dry-run ."
+      -
+        name: Run Flutter unit tests
+        run: flutter test
+    runs-on:
+      - "${{ matrix.os }}"
